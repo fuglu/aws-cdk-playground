@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "build": "tsc",
-    "test": "jest",
+    "build": "rimraf ./dist && tsc",
+    "test": "jest --ci",
     "lint": "eslint **/*.{ts,js}"
   },
   "repository": {
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/fuglu/aws-cdk-playground#readme",
   "dependencies": {
+    "@godaddy/terminus": "^4.3.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -38,12 +39,14 @@
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
+    "dockerlint": "^0.3.9",
     "eslint": "^6.7.1",
     "eslint-config-prettier": "^6.7.0",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
     "ts-node-dev": "^1.0.0-pre.44",
@@ -62,6 +65,9 @@
     "*.{ts,js}": [
       "eslint --fix",
       "git add"
+    ],
+    "Dockerfile": [
+      "dockerlint"
     ]
   }
 }
