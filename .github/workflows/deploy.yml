@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Echo repository name
-      run: echo ${{ format(github.repository, "fuglu/") }}
+      run: echo ${{ github.repository }}
