@@ -1,13 +1,27 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Echo repository name
-      run: echo ${{ github.repository }}
+      - uses: actions/checkout@v1
+
+      - name: Build
+        run: docker build -t "$DOCKER_IMAGE:latest"
+        env:
+          DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
+
+      - name: Login
+        run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_TOKEN
+        env:
+          DOCKER_HUB_USERNAME: ${{secrets.DOCKER_HUB_USERNAME}}
+          DOCKER_HUB_TOKEN: ${{secrets.DOCKER_HUB_TOKEN}}
+
+      - name: Push
+        run: docker push "$DOCKER_IMAGE:latest"
