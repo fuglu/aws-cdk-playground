@@ -25,3 +25,5 @@ jobs:
 
       - name: Push
         run: docker push $DOCKER_IMAGE:latest
+        env:
+          DOCKER_IMAGE: ${{secrets.DOCKER_IMAGE}}
