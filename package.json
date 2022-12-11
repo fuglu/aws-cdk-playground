@@ -31,7 +31,7 @@
   "homepage": "https://github.com/fuglu/aws-cdk-playground#readme",
   "dependencies": {
     "@godaddy/terminus": "^4.3.0",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
